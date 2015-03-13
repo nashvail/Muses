@@ -1,0 +1,25 @@
+/* Other awesome stuff that will go in here*/
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
+.sample-content { 
+	display : flex;
+	justify-content : center;
+	height : 100%;
+	flex-direction : column;
+}
+
+.itemOne {
+	padding : 10px 100px 10px 100px;
+}
+h1 {
+	font-family: "Lato";
+	font-weight : 300;
+	font-size : 1.5em;
+	color : white;
+	padding : 8px 12px;
+	background-color: #958e8e;
+	margin : 0px;
+	margin-top : 2px;
+	width : auto;
+}

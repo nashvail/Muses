@@ -11,9 +11,14 @@
       "local_path" : "index.html"
     }
   },
+
+  "chrome_url_overrides" : {
+    "newtab" : "index.html"
+  },
+
  "offline_enabled" : true,
   "background": {
     "persistent": false,
-    "scripts": ["main.js"]
+    "scripts": ["js/main.js"]
   }
 }
