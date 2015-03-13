@@ -1,0 +1,19 @@
+{
+  "name": "Testing out context menus",
+  "description": "Shows some of the features of the Context Menus API using an event page",
+  "version": "0.7",
+  "manifest_version": 2,
+  "permissions": ["contextMenus", "storage"],
+
+  // newly added 
+  "app" : {
+    "launch" : {
+      "local_path" : "index.html"
+    }
+  },
+ "offline_enabled" : true,
+  "background": {
+    "persistent": false,
+    "scripts": ["main.js"]
+  }
+}
