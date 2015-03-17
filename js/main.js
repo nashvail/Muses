@@ -1,16 +1,30 @@
-console.log("let us try this shit out");
-console.log(chrome.storage);
-// The chrome API for this is quite amazing isn't it? right it is 
-function onClickHandler(info, tab) {
-  if(info.menuItemId == "alertSelect") {
-    alert(info.selectionText) 
-  }else{
-    console.log(info.selectionText);
-  }
-};
+'use strict';
+function Note(text) {
+	this.text = text;
+	this.text_array = text.split(" ");
+	this.hiddenIndices = [1, 4, 9, 14];
+}
 
-chrome.contextMenus.onClicked.addListener(onClickHandler);
+var sampleNote = new Note("Some words that are here they need to be omitted just for fun and giggles.");
 
-chrome.contextMenus.create({"title" : "Alert selected", "id" : "alertSelect", "type" : "normal", "contexts" : ["selection"]});
-chrome.contextMenus.create({"title" : "Log to console", "id" : "logSelect", "type" : "normal", "contexts" : ["selection"]});
+var sample_note = document.querySelector(".itemOne h1");
+sample_note.textContent = processText(sampleNote);
 
+function processText(note) {
+	var result = [];
+	note.text_array.forEach(function(word, index) {
+		if(note.hiddenIndices.indexOf(index) > -1) // if the current word is to be hidden
+			result.push(replaceWith(word, "_"));
+		else
+			result.push(word);
+	}); 
+	
+	return result.join(" ");
+}
+
+function replaceWith(string, character) {
+	var resultingString = "";
+	for(var i = 0 ; i < string.length ; i++)
+		resultingString += character;
+	return resultingString;
+}
