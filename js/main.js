@@ -11,7 +11,7 @@ $(document).ready(function(){
 	function Note(noteText) {
 		this.noteText = noteText;
 		this.wordsArray = noteText.trim().split(" ");
-		this.hiddenWordIndices = [1, 4, 9, , 14];
+		this.hiddenWordIndices = [2, 4, 9, , 14];
 
 		// Note with the same text stored in HTML form, with span tags around each word, 
 		// tags differ for the words that are supposed to be hidden and those that are not
@@ -55,7 +55,7 @@ $(document).ready(function(){
 	* Returns a random number between min_delay and max_delay
 	*/
 	var min_delay = 200;
-	var max_delay = 700;
+	var max_delay = 500;
 	function randomDelay() {
 		return Math.floor(Math.random() * (max_delay - min_delay + 1) + min_delay);
 	}
@@ -63,7 +63,7 @@ $(document).ready(function(){
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 
 
-	var testerNote = new Note("Some words that are here they need to be omitted just for fun and giggles.");
+	var testerNote = new Note("The all thirteen colonies began asking for independence in 1775 and finally gained in 1776.");
 	console.log(testerNote.isHiddenWord("that"));
 
 	var note = document.querySelector(".note h1");
@@ -74,7 +74,7 @@ $(document).ready(function(){
 
 	for(var i = 0 ; i < words.length ; i++){
 		if(!testerNote.isHiddenWord(words[i].textContent)){
-			$(words[i]).delay(randomDelay()).animate({"color" : "black"}, 2000,'easeOutQuint', function(){});
+			$(words[i]).delay(randomDelay()).animate({"color" : "#323232"}, 950, function(){});
 		}
 	}
 });
