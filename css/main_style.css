@@ -6,13 +6,13 @@
 	display : none;
 }
 
-.sample-content { 
+.container { 
 	width : 75%;
 	margin : 0 auto;
 	margin-top : 15%;
 }
 
-.itemOne {
+.note{
 	padding : 10px 100px 10px 100px;
 }
 h1 {
@@ -27,4 +27,8 @@ h1 {
 	word-spacing: 8px;
 	cursor : default;
 	-webkit-user-select : none;
+}
+
+.hidden_word {
+	text-decoration: underline;
 }
