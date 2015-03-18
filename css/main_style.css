@@ -19,10 +19,12 @@ h1 {
 	font-family: "Helvetica Neue";
 	font-weight: 300;
 	font-size : 2em;
-	color : #2c3e50;
+	color : white;
 	margin : 0px;
 	margin-top : 2px;
 	width : auto;
 	line-height : 70px;
 	word-spacing: 8px;
+	cursor : default;
+	-webkit-user-select : none;
 }
