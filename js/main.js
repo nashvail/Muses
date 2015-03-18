@@ -1,4 +1,9 @@
 'use strict';
+var sample_note = $('.itemOne h1');
+
+/*
+* The note object that is to be retreived from the data base
+*/
 function Note(text) {
 	this.text = text;
 	this.text_array = text.split(" ");
@@ -7,8 +12,6 @@ function Note(text) {
 
 var sampleNote = new Note("Some words that are here they need to be omitted just for fun and giggles.");
 
-var sample_note = document.querySelector(".itemOne h1");
-sample_note.textContent = processText(sampleNote);
 
 function processText(note) {
 	var result = [];
@@ -28,3 +31,12 @@ function replaceWith(string, character) {
 		resultingString += character;
 	return resultingString;
 }
+
+sample_note.append(processText(sampleNote));
+sample_note.hide();
+
+$(document).ready(function(){
+	sample_note.delay(800).fadeIn(1500,"easeOutQuint", function(){
+		// Animation complete
+	});
+});

@@ -2,6 +2,10 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300);
 
+.hidden {
+	display : none;
+}
+
 .sample-content { 
 	width : 75%;
 	margin : 0 auto;
