@@ -1,8 +1,5 @@
 /* Other awesome stuff that will go in here*/
 
-@import url(http://fonts.googleapis.com/css?family=Lato:300);
-
-
 .hidden {
 	display : none;
 }
@@ -17,7 +14,7 @@
 	padding : 10px 100px 10px 100px;
 }
 h1 {
-	font-family: "Cardo";
+	font-family: "Proxima Nova";
 	font-weight: 300;
 	font-size : 2em;
 	color : white;
@@ -27,10 +24,12 @@ h1 {
 	line-height : 80px;
 	word-spacing: 8px;
 	cursor : default;
+	padding : 0px 0px 0px 20px;
 	-webkit-user-select : none;
+
 }
 
 .hidden_word {
-	border-bottom : 2px solid #eeeeee;
+	border-bottom : 2px solid #ccc;
 	transition : all 0.3s;
 }

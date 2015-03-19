@@ -55,7 +55,7 @@ $(document).ready(function(){
 	* Returns a random number between min_delay and max_delay
 	*/
 	var min_delay = 150;
-	var max_delay = 500;
+	var max_delay = 700;
 	function randomDelay() {
 		return Math.floor(Math.random() * (max_delay - min_delay + 1) + min_delay);
 	}
@@ -63,7 +63,7 @@ $(document).ready(function(){
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 
 
-	var testerNote = new Note("The all thirteen colonies began asking for independence in 1775 and finally gained in 1776.");
+	var testerNote = new Note("All of carbohydrates from the food you eat are then transformed into energy for people.");
 	console.log(testerNote.isHiddenWord("that"));
 
 	var note = document.querySelector(".note h1");
@@ -74,7 +74,7 @@ $(document).ready(function(){
 
 	for(var i = 0 ; i < words.length ; i++){
 		if(!testerNote.isHiddenWord(words[i].textContent)){
-			$(words[i]).delay(randomDelay()).animate({"color" : "#323232"}, 500, function(){});
+			$(words[i]).delay(randomDelay()).animate({"color" : "#323232"}, 1500,'easeOutQuint', function(){});
 		}
 	}
 });
