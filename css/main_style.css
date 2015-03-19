@@ -1,5 +1,9 @@
 /* Other awesome stuff that will go in here*/
 
+body {
+	background-color : #F2F2F5;
+}
+
 .hidden {
 	display : none;
 }
@@ -17,7 +21,7 @@ h1 {
 	font-family: "Proxima Nova";
 	font-weight: 300;
 	font-size : 2em;
-	color : white;
+	color : #F2F2F5;
 	margin : 0px;
 	margin-top : 2px;
 	width : auto;
