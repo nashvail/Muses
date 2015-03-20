@@ -10,6 +10,7 @@ body {
 
 .show_btn {
 	margin-top : 35px;
+	cursor : pointer;
 }
 
 .container { 
@@ -34,7 +35,7 @@ h1 {
 	cursor : default;
 	padding : 0px 0px 0px 20px;
 	-webkit-user-select : none;
-
+	/*border : 1px solid black;*/
 }
 
 .hidden_word {

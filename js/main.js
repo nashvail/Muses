@@ -79,4 +79,16 @@ $(document).ready(function(){
 			}
 		}
 	}, 300);
-});
+
+	// testing detecting click and hold on show_btn
+
+	function myFunction() {
+		console.log("click and mother fucking hold");
+	}
+	var timeoutId = 0;
+	$('.show_btn').mousedown(function() {
+	    timeoutId = setInterval(myFunction, 100);
+	}).bind('mouseup mouseleave', function() {
+			clearInterval(timeoutId);
+		});
+	});
