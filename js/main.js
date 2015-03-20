@@ -54,7 +54,7 @@ $(document).ready(function(){
 	* -------------------------------------------------------
 	* Returns a random number between min_delay and max_delay
 	*/
-	var min_delay = 150;
+	var min_delay = 0;
 	var max_delay = 700;
 	function randomDelay() {
 		return Math.floor(Math.random() * (max_delay - min_delay + 1) + min_delay);
@@ -71,10 +71,12 @@ $(document).ready(function(){
 	console.log(note);
 
 	var words = note.childNodes;
-
-	for(var i = 0 ; i < words.length ; i++){
-		if(!testerNote.isHiddenWord(words[i].textContent)){
-			$(words[i]).delay(randomDelay()).animate({"color" : "#323232"}, 1500,'easeOutQuint', function(){});
+	// set under settimeout function to smooth the animation a little bit
+	setTimeout(function(){
+		for(var i = 0 ; i < words.length ; i++){
+			if(!testerNote.isHiddenWord(words[i].textContent)){
+				$(words[i]).delay(randomDelay()).animate({"color" : "#34495e"}, 700, function(){});
+			}
 		}
-	}
+	}, 300);
 });

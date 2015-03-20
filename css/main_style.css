@@ -1,27 +1,31 @@
 /* Other awesome stuff that will go in here*/
 
 body {
-	background-color : #F2F2F5;
+	background-color : #fff;
 }
 
 .hidden {
 	display : none;
 }
 
+.show_btn {
+	margin-top : 35px;
+}
+
 .container { 
-	width : 75%;
+	width : 85%;
 	margin : 0 auto;
-	margin-top : 15%;
+	margin-top : 9%;
 }
 
 .note{
 	padding : 10px 100px 10px 100px;
 }
 h1 {
-	font-family: "Proxima Nova";
+	font-family: "Helvetica Neue";
 	font-weight: 300;
 	font-size : 2em;
-	color : #F2F2F5;
+	color : #fff;
 	margin : 0px;
 	margin-top : 2px;
 	width : auto;
