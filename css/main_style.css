@@ -22,6 +22,7 @@ body {
 .note{
 	padding : 10px 100px 10px 100px;
 }
+
 h1 {
 	font-family: "Helvetica Neue";
 	font-weight: 300;
@@ -35,10 +36,19 @@ h1 {
 	cursor : default;
 	padding : 0px 0px 0px 20px;
 	-webkit-user-select : none;
-	/*border : 1px solid black;*/
 }
 
 .hidden_word {
 	border-bottom : 2px solid #ccc;
 	transition : all 0.3s;
+}
+
+.backhilite {
+	position : absolute;
+	top : 26%;
+	left : 0;
+	width : 0px;
+	height: 200px;
+	background-color: #ccc;
+	z-index : -999;
 }

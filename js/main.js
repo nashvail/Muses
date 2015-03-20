@@ -63,7 +63,7 @@ $(document).ready(function(){
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 
 
-	var testerNote = new Note("All of carbohydrates from the food you eat are then transformed into energy for people.");
+	var testerNote = new Note("All of thirteen colonies began demanding independence in 1775 and gained in 1776");
 	console.log(testerNote.isHiddenWord("that"));
 
 	var note = document.querySelector(".note h1");
@@ -82,13 +82,26 @@ $(document).ready(function(){
 
 	// testing detecting click and hold on show_btn
 
-	function myFunction() {
-		console.log("click and mother fucking hold");
-	}
-	var timeoutId = 0;
-	$('.show_btn').mousedown(function() {
-	    timeoutId = setInterval(myFunction, 100);
-	}).bind('mouseup mouseleave', function() {
-			clearInterval(timeoutId);
-		});
+	// function myFunction() {
+	// 	console.log("click and mother fucking hold");
+	// }
+	// var timeoutId = 0;
+	// $('.show_btn').mousedown(function() {
+	//     timeoutId = setInterval(myFunction, 100);
+	// }).bind('mouseup mouseleave', function() {
+	// 		clearInterval(timeoutId);
+	// 	});
+
+	var show = document.querySelector(".show_btn");
+	var note = document.querySelector(".note");
+	var noteContainer = note.getBoundingClientRect();
+
+	var backHilite = document.querySelector(".backhilite");
+	backHilite.style.top = noteContainer.top;
+	backHilite.style.height = noteContainer.height;
+	backHilite.style.width = 0;
+
+	show.addEventListener("mousedown", function(){
+		$('.backhilite').animate({"width" : "100%"}, 700, 'easeInOutCirc', function(){});
 	});
+});
