@@ -42,3 +42,115 @@ h1 {
 	border-bottom : 2px solid #ccc;
 	transition : all 0.3s;
 }
+
+/*For the bulb click effect*/
+/* Stana */
+.cbutton {
+	position: relative;
+	display: inline-block;
+	margin: 1em;
+	padding: 0;
+	border: none;
+	background: none;
+	color: #286aab;
+	font-size: 1.4em;
+	transition: color 0.7s;
+}
+
+.cbutton.cbutton--click,
+.cbutton:focus {
+	outline: none;
+	color: #3c8ddc;
+}
+
+.cbutton__icon {
+	display: block;
+}
+
+.cbutton__text {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.cbutton::after {
+	content: '';
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	/*margin: -35px 0 0 -35px;*/
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.cbutton--effect-stana .cbutton__helper {
+	position: absolute;
+	top: 18px;
+	left: 16px;
+	margin: -40px 0 0 -40px;
+	width: 80px;
+	height: 80px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.cbutton--effect-stana line {
+	fill: none;
+	stroke-width: 2;
+}
+
+.cbutton--box-color-7 line {
+	stroke: #000;
+}
+
+.cbutton--box-color-8 line {
+	stroke: #7bff00;
+}
+
+.cbutton--box-color-9 line {
+	stroke: #fff;
+}
+
+.clip-ring {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+.cbutton--effect-stana.cbutton--click .cbutton__helper {
+	-webkit-animation: anim-effect-stana 0.4s ease-in forwards;
+	animation: anim-effect-stana 0.4s ease-in forwards;
+}
+
+@-webkit-keyframes anim-effect-stana {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.3;
+
+		-webkit-animation-timing: ease-out;
+		animation-timing: ease-out;
+	}
+}
+
+@keyframes anim-effect-stana {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.3;
+
+		-webkit-animation-timing: ease-out;
+		animation-timing: ease-out;
+	}
+}
+
+.cbutton--effect-stana.cbutton--click .clip-ring {
+	-webkit-transition: -webkit-transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+	-webkit-transform: scale3d(3, 3, 1);
+	transform: scale3d(3, 3, 1);
+}
