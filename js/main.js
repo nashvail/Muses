@@ -79,4 +79,12 @@ $(document).ready(function(){
 			}
 		}
 	}, 300);
+
+	var show_btn = $('.show_btn');
+	show_btn.click(function() {
+		show_btn.addClass("cbutton--click");
+		setTimeout(function(){
+			show_btn.removeClass("cbutton--click");
+		}, 500);
+	});
 });
