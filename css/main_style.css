@@ -120,8 +120,8 @@ h1 {
 }
 
 .cbutton--effect-stana.cbutton--click .cbutton__helper {
-	-webkit-animation: anim-effect-stana 0.4s ease-in forwards;
-	animation: anim-effect-stana 0.4s ease-in forwards;
+	-webkit-animation: anim-effect-stana 0.6s ease-in forwards;
+	animation: anim-effect-stana 0.6s ease-in forwards;
 }
 
 @-webkit-keyframes anim-effect-stana {
@@ -160,6 +160,6 @@ h1 {
 	left : 0;
 	width : 0px;
 	height: 200px;
-	background-color: #ccc;
+	background-color: #f1c40f;
 	z-index : -999;
 }
