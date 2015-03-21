@@ -2,6 +2,7 @@
 
 body {
 	background-color : #fff;
+	-webkit-user-select : none;
 }
 
 .hidden {

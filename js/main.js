@@ -58,10 +58,12 @@ $(document).ready(function(){
 	function initialize(noteObj) {
 		// Get the node holding the note form the DOM
 		var note = document.querySelector(".note h1");
-		console.log(note.childNodes);
+
 		// clear and add new html to the note holder
 		note.innerHTML = "";
+		$('.container').fadeOut(300, function(){});
 		note.innerHTML = noteObj.getNoteHTML;
+		$('.container').fadeIn(300, function(){});
 		// Animate in the note
 		animateNote(note, noteObj);
 
@@ -71,6 +73,8 @@ $(document).ready(function(){
 		backHilite.style.top = noteContainer.top;
 		backHilite.style.height = noteContainer.height;
 		backHilite.style.width = 0;
+
+
 
 	}
 
@@ -122,8 +126,6 @@ $(document).ready(function(){
 		initialize(testerNote);
 	});
 
-
-
 	// Event listener for the show button(the bulb icon)
 	var show_btn = $('.show_btn');
 	show_btn.click(function(event){
@@ -135,5 +137,6 @@ $(document).ready(function(){
 		}, 500);
 		event.stopPropagation();
 	});
+
 	
 });
