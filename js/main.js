@@ -72,17 +72,6 @@ $(document).ready(function(){
 		backHilite.style.height = noteContainer.height;
 		backHilite.style.width = 0;
 
-
-		// Event listener for the show button(the bulb icon)
-		var show_btn = $('.show_btn');
-		show_btn.click(function(){
-			show_btn.addClass("cbutton--click");
-			$('.hidden_word').css({"border" : "none"});
-			$('.backhilite').animate({"width" : "100%"}, 700, 'easeInOutCirc', function(){});
-			setTimeout(function(){
-				show_btn.removeClass("cbutton--click");
-			}, 500);
-		});
 	}
 
 	/*
@@ -131,6 +120,20 @@ $(document).ready(function(){
 	addEventListener("click", function() {
 		testerNote = new Note(notes[Math.floor(Math.random() * notes.length)]);
 		initialize(testerNote);
+	});
+
+
+
+	// Event listener for the show button(the bulb icon)
+	var show_btn = $('.show_btn');
+	show_btn.click(function(event){
+		show_btn.addClass("cbutton--click");
+		$('.hidden_word').css({"border" : "none"});
+		$('.backhilite').animate({"width" : "100%"}, 700, 'easeInOutCirc', function(){});
+		setTimeout(function(){
+			show_btn.removeClass("cbutton--click");
+		}, 500);
+		event.stopPropagation();
 	});
 	
 });
