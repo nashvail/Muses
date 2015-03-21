@@ -63,7 +63,7 @@ $(document).ready(function(){
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 
 
-	var testerNote = new Note("All of carbohydrates from the food you eat are then transformed into energy for people.");
+	var testerNote = new Note("All of thirteen colonies began demanding independence in 1775 and gained in 1776");
 	console.log(testerNote.isHiddenWord("that"));
 
 	var note = document.querySelector(".note h1");
@@ -80,9 +80,18 @@ $(document).ready(function(){
 		}
 	}, 300);
 
+	var note = document.querySelector(".note");
+	var noteContainer = note.getBoundingClientRect();
+
+	var backHilite = document.querySelector(".backhilite");
+	backHilite.style.top = noteContainer.top;
+	backHilite.style.height = noteContainer.height;
+	backHilite.style.width = 0;
+
 	var show_btn = $('.show_btn');
-	show_btn.click(function() {
+	show_btn.click(function(){
 		show_btn.addClass("cbutton--click");
+		$('.backhilite').animate({"width" : "100%"}, 700, 'easeInOutCirc', function(){});
 		setTimeout(function(){
 			show_btn.removeClass("cbutton--click");
 		}, 500);
