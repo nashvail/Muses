@@ -108,21 +108,13 @@ $(document).ready(function(){
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 
 	// testing chrome_storage here
-	console.log(chrome.extension.getBackgroundPage().getRandomNote());	
+	var randomNote = new Note(chrome.extension.getBackgroundPage().getRandomNote());
 
-	// end playing with the chrome_storage here
-	var notes = [
-		"All of the thriteen colonies began demanding indpendence in 1775 and gainded in 1776",
-		"The more you sleep the better your grades will get as research says for example",
-		"Due to the shooting up of Mitosin hormone you are not able to sleep prpoerly when there is light."
-	];
-
-	var testerNote = new Note(notes[Math.floor(Math.random() * notes.length)]);
-	initialize(testerNote);
+	initialize(randomNote);
 
 	addEventListener("click", function() {
-		testerNote = new Note(notes[Math.floor(Math.random() * notes.length)]);
-		initialize(testerNote);
+		randomNote = new Note(chrome.extension.getBackgroundPage().getRandomNote());
+		initialize(randomNote);
 	});
 
 	// Event listener for the show button(the bulb icon)
