@@ -61,7 +61,6 @@ $(document).ready(function(){
 
 		// clear and add new html to the note holder
 		note.innerHTML = "";
-		$('.container').fadeOut(300, function(){});
 		note.innerHTML = noteObj.getNoteHTML;
 		$('.container').fadeIn(300, function(){});
 		// Animate in the note
