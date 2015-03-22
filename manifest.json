@@ -18,7 +18,7 @@
 
  "offline_enabled" : true,
   "background": {
-    "persistent": false,
+    "persistent": true,
     "scripts": ["js/background.js"]
   }
 }
