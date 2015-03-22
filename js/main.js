@@ -1,51 +1,50 @@
-
-// ####################################### START NOTE OBJECT DEFINITON #####################################
-
-/*
-* Object : Note
-* -----------------------------------------------------
-* Object that defines a single note.
-*/
-function Note(noteText) {
-	this.noteText = noteText;
-	this.wordsArray = noteText.trim().split(" ");
-	this.hiddenWordIndices = [2, 4, 14, 9];
-
-	// Note with the same text stored in HTML form, with span tags around each word, 
-	// tags differ for the words that are supposed to be hidden and those that are not
-	var that = this;
-	this.noteHTML = this.wordsArray.map(function(word, currentWordIndex) {
-		if(that.hiddenWordIndices.indexOf(currentWordIndex) > -1) // the word is supposed to be hidden
-			return '<span class = "hidden_word">' + word + '</span>';
-		else
-			return '<span id = "word_' + currentWordIndex + '">' + word + '</span>';
-	}).join(" ");
-}
-
-/*
-* Function : getNoteHTML
-* -----------------------------------------------------
-* Returns the HTML version of the note, that is with each
-* word surrounded by appropriate span tag
-*/
-Object.defineProperty(Note.prototype, "getNoteHTML", {get : function() {
-	return this.noteHTML;
-}});
-
-/*
-* Function : isHiddenWord
-* -----------------------------------------------------
-* Returns true if the supplied word is supposed to be 
-* hidden, false otherwise
-*/
-Note.prototype.isHiddenWord = function(wordIndex) {
-	return (this.hiddenWordIndices.indexOf(wordIndex) > -1);
-};
-
-// ####################################### END NOTE OBJECT DEFINITON #####################################
-
 $(document).ready(function(){
-'use strict';
+	'use strict';
+
+	// ####################################### START NOTE OBJECT DEFINITON #####################################
+
+	/*
+	* Object : Note
+	* -----------------------------------------------------
+	* Object that defines a single note.
+	*/
+	function Note(noteText) {
+		this.noteText = noteText;
+		this.wordsArray = noteText.trim().split(" ");
+		this.hiddenWordIndices = [2, 4, 14, 9];
+
+		// Note with the same text stored in HTML form, with span tags around each word, 
+		// tags differ for the words that are supposed to be hidden and those that are not
+		var that = this;
+		this.noteHTML = this.wordsArray.map(function(word, currentWordIndex) {
+			if(that.hiddenWordIndices.indexOf(currentWordIndex) > -1) // the word is supposed to be hidden
+				return '<span class = "hidden_word">' + word + '</span>';
+			else
+				return '<span id = "word_' + currentWordIndex + '">' + word + '</span>';
+		}).join(" ");
+	}
+
+	/*
+	* Function : getNoteHTML
+	* -----------------------------------------------------
+	* Returns the HTML version of the note, that is with each
+	* word surrounded by appropriate span tag
+	*/
+	Object.defineProperty(Note.prototype, "getNoteHTML", {get : function() {
+		return this.noteHTML;
+	}});
+
+	/*
+	* Function : isHiddenWord
+	* -----------------------------------------------------
+	* Returns true if the supplied word is supposed to be 
+	* hidden, false otherwise
+	*/
+	Note.prototype.isHiddenWord = function(wordIndex) {
+		return (this.hiddenWordIndices.indexOf(wordIndex) > -1);
+	};
+
+	// ####################################### END NOTE OBJECT DEFINITON #####################################
 
 	// ####################################### MISC. FUNCTION DEFINITIONS ####################################
 
