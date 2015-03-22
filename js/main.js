@@ -108,7 +108,7 @@ $(document).ready(function(){
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 
 	// testing chrome_storage here
-	console.log(chrome.extension.getBackgroundPage());	
+	console.log(chrome.extension.getBackgroundPage().getRandomNote());	
 
 	// end playing with the chrome_storage here
 	var notes = [

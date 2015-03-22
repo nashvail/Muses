@@ -7,16 +7,27 @@ var ID_SAVE_MENU = "saveNote";
 var STORAGE_KEY_NOTES = "notes";
 
 // Array that holds the string notes
-var notes = ["There is something beautiful about it"];
+var notes = ["There is something beautiful happening" , "yes there is don't you just love it", "yes i love it a lot"];
 
 // Create entry in the local storage after first time installation
 // Will check if this is the first time the extension has been run, if yes then sets the timeSpentOnWebsites to 0
 chrome.runtime.onInstalled.addListener(function(details){
     if(details.reason == "install"){
-		chrome.storage.local.set({ "notes" : JSON.stringify(window.notes)}, function(result) {});
+    	var storageKey = window.STORAGE_KEY_NOTES;
+		chrome.storage.local.set({ storageKey : JSON.stringify(window.notes)}, function(result) {});
     }
 });
 
+// Detect for change in storage and update the variables
+chrome.storage.onChanged.addListener(function(){
+    // update the websites to track variable
+    chrome.storage.local.get("notes", function(result){
+        window.notes = JSON.parse(result[window.STORAGE_KEY_NOTES]);
+        console.log(window.notes);
+    });
+});
+
+startUp();
 function startUp() {
 	// ############################### SET UP CONTEXT MENUS AND CLICK HANDLERS ################################
 
@@ -24,7 +35,8 @@ function startUp() {
 	function onClickHandler(info, tab) {
 	  if(info.menuItemId === ID_SAVE_MENU) {
 	  	// save the note here
-	    alert(info.selectionText) 
+	  	window.notes.push(info.selectionText);
+	  	chrome.storage.local.set({"notes" : JSON.stringify(window.notes)}, function(){});
 	  }
 	};
 
@@ -36,10 +48,13 @@ function startUp() {
 
 	// ############################## SET UP VARIABLES FROM LOCAL STORAGE
 	// Add data to the notes array from the local storage
-	chrome.storage.local.get(null, function(result){
+	chrome.storage.local.get(window.STORAGE_KEY_NOTES, function(result){
 		window.notes = [].concat(JSON.parse(result[window.STORAGE_KEY_NOTES]));
 	});
-
 }
 
-startUp();
+
+function getRandomNote() {
+	if(notes.length === 0) return "";
+	else return notes[Math.floor(Math.random() * notes.length)];
+}
