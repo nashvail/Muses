@@ -109,13 +109,8 @@ $(document).ready(function(){
 
 	// testing chrome_storage here
 	var randomNote = new Note(chrome.extension.getBackgroundPage().getRandomNote());
-
 	initialize(randomNote);
 
-	addEventListener("click", function() {
-		randomNote = new Note(chrome.extension.getBackgroundPage().getRandomNote());
-		initialize(randomNote);
-	});
 
 	// Event listener for the show button(the bulb icon)
 	var show_btn = $('.show_btn');

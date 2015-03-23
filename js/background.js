@@ -7,7 +7,8 @@ var ID_SAVE_MENU = "saveNote";
 var STORAGE_KEY_NOTES = "notes";
 
 // Array that holds the string notes
-var notes = ["There is something beautiful happening" , "yes there is don't you just love it", "yes i love it a lot"];
+// We can give initial value to this array if we want to
+var notes = [];
 
 // Create entry in the local storage after first time installation
 // Will check if this is the first time the extension has been run, if yes then sets the timeSpentOnWebsites to 0
@@ -38,7 +39,7 @@ function startUp() {
 	  	window.notes.push(info.selectionText);
 	  	chrome.storage.local.set({"notes" : JSON.stringify(window.notes)}, function(){});
 	  }
-	};
+	}
 
 	// Checks for clicks on context menu item clicks created by this extension
 	chrome.contextMenus.onClicked.addListener(onClickHandler);
