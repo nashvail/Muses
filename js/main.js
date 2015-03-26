@@ -8,10 +8,10 @@ $(document).ready(function(){
 	* -----------------------------------------------------
 	* Object that defines a single note.
 	*/
-	function Note(noteText) {
+	function Note(noteText, hiddenIndices) {
 		this.noteText = noteText;
 		this.wordsArray = noteText.trim().split(" ");
-		this.hiddenWordIndices = [2, 4, 14, 9];
+		this.hiddenWordIndices = hiddenIndices;
 
 		// Note with the same text stored in HTML form, with span tags around each word, 
 		// tags differ for the words that are supposed to be hidden and those that are not
@@ -108,8 +108,8 @@ $(document).ready(function(){
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 
 	// testing chrome_storage here
-	var randomNote = new Note(chrome.extension.getBackgroundPage().getRandomNote());
-	initialize(randomNote);
+	var randomNote = chrome.extension.getBackgroundPage().getRandomNote();
+	initialize(new Note(randomNote.content, randomNote.hidden));
 
 
 	// Event listener for the show button(the bulb icon)

@@ -10,7 +10,7 @@ body {
 }
 
 .show_btn {
-	margin-top : 35px;
+	margin-top : 45px !important;
 	cursor : pointer;
 }
 
