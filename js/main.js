@@ -8,10 +8,10 @@ $(document).ready(function(){
 	* -----------------------------------------------------
 	* Object that defines a single note.
 	*/
-	function Note(noteText) {
+	function Note(noteText, hiddenIndices) {
 		this.noteText = noteText;
 		this.wordsArray = noteText.trim().split(" ");
-		this.hiddenWordIndices = this.getHiddenIndices();
+		this.hiddenWordIndices = hiddenIndices;
 
 		// Note with the same text stored in HTML form, with span tags around each word, 
 		// tags differ for the words that are supposed to be hidden and those that are not
@@ -52,10 +52,11 @@ $(document).ready(function(){
 	* while displaying the fact/quote. Never hides the first word
 	*/
 	Note.prototype.getHiddenIndices = function() {
-		var commonWords = ["several", "call", "called", "are","the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "on", "with", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their ", "what", "so", "up", "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "like", "time", "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "use", "two", "how", "our", "work", "first", "well", "way ", "even", "new", "want", "because", "any", "these", "give", "day", "most", "us"];
+		var commonWords = ["is","several", "call", "called", "are","the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "on", "with", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their ", "what", "so", "up", "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "like", "time", "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "use", "two", "how", "our", "work", "first", "well", "way ", "even", "new", "want", "because", "any", "these", "give", "day", "most", "us"];
 		var hiddenIndices = []; 
 		this.wordsArray.forEach(function(word, index) {
-			if(!isCommonWord(word) && Math.random() > 0.3 && index != 0) {
+			// First word of the sentence is not to be hidden
+			if(!isCommonWord(word) && index != 0) {
 				hiddenIndices.push(index);
 			}
 		});
@@ -64,10 +65,11 @@ $(document).ready(function(){
 			return (commonWords.indexOf(word) > -1);
 		}
 
-		var max_hidden_words = Math.ceil(0.30 * this.wordsArray.length);
-		if(hiddenIndices.length > max_hidden_words) {
-			var removeNum = hiddenIndices.length - max_hidden_words;
-			for(var i = 0 ; i < removeNum ; i++) {
+		// Only hide maximum of 30% of total words in the note
+		var maxHiddenAllowed = Math.ceil(0.30 * this.wordsArray.length);
+		if(hiddenIndices.length > maxHiddenAllowed) {
+			var removeCount = hiddenIndices.length - maxHiddenAllowed;
+			for(var i = 0 ; i < removeCount ; i++) {
 				var toRemoveIndex = Math.floor(Math.random() * hiddenIndices.length);
 				hiddenIndices.splice(toRemoveIndex, 1);
 			}
@@ -139,8 +141,8 @@ $(document).ready(function(){
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 
 	// testing chrome_storage here
-	var randomNote = new Note(chrome.extension.getBackgroundPage().getRandomNote());
-	initialize(randomNote);
+	var randomNote = chrome.extension.getBackgroundPage().getRandomNote();
+	initialize(new Note(randomNote.content, randomNote.hidden));
 
 
 	// Event listener for the show button(the bulb icon)
