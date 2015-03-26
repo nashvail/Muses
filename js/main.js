@@ -44,39 +44,6 @@ $(document).ready(function(){
 		return (this.hiddenWordIndices.indexOf(wordIndex) > -1);
 	};
 
-	/*
-	* Function : getHiddenIndices
-	* Usage    : this.hiddenIndices = this.getHiddenIndices();
-	* ----------------------------------------------------------------------------
-	* Returns an array containing the index of words that are supposed to be hidden
-	* while displaying the fact/quote. Never hides the first word
-	*/
-	Note.prototype.getHiddenIndices = function() {
-		var commonWords = ["is","several", "call", "called", "are","the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "on", "with", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their ", "what", "so", "up", "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "like", "time", "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "use", "two", "how", "our", "work", "first", "well", "way ", "even", "new", "want", "because", "any", "these", "give", "day", "most", "us"];
-		var hiddenIndices = []; 
-		this.wordsArray.forEach(function(word, index) {
-			// First word of the sentence is not to be hidden
-			if(!isCommonWord(word) && index != 0) {
-				hiddenIndices.push(index);
-			}
-		});
-
-		function isCommonWord(word) {
-			return (commonWords.indexOf(word) > -1);
-		}
-
-		// Only hide maximum of 30% of total words in the note
-		var maxHiddenAllowed = Math.ceil(0.30 * this.wordsArray.length);
-		if(hiddenIndices.length > maxHiddenAllowed) {
-			var removeCount = hiddenIndices.length - maxHiddenAllowed;
-			for(var i = 0 ; i < removeCount ; i++) {
-				var toRemoveIndex = Math.floor(Math.random() * hiddenIndices.length);
-				hiddenIndices.splice(toRemoveIndex, 1);
-			}
-		}
-		return hiddenIndices;
-	};
-
 	// ####################################### END NOTE OBJECT DEFINITON #####################################
 
 	// ####################################### MISC. FUNCTION DEFINITIONS ####################################
