@@ -55,7 +55,6 @@ chrome.storage.onChanged.addListener(function(){
 	  	snappedNote.content = info.selectionText;
 	  	snappedNote.hidden = getHiddenIndices(snappedNote.content);
 	  	window.notes.push(snappedNote)
-	  	// window.notes.push(info.selectionText);
 	  	chrome.storage.local.set({"notes" : JSON.stringify(window.notes)}, function(){});
 	  }
 	}
