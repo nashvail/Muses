@@ -8,7 +8,7 @@ var STORAGE_KEY_NOTES = "notes";
 
 // Array that holds the string notes
 // We can give initial value to this array if we want to
-var notes = [];
+var notes = ["There are 206 bones in the human body"];
 
 // Create entry in the local storage after first time installation
 // Will check if this is the first time the extension has been run, if yes then sets the timeSpentOnWebsites to 0
