@@ -74,7 +74,6 @@ chrome.storage.onChanged.addListener(function(){
 */
 
 function getHiddenIndices(text) {
-	var commonWords = ["is","several", "call", "called", "are","the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "on", "with", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their ", "what", "so", "up", "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "like", "time", "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "use", "two", "how", "our", "work", "first", "well", "way ", "even", "new", "want", "because", "any", "these", "give", "day", "most", "us"];
 	var wordsArray = text.trim().split(" ");
 	var hiddenIndices = []; 
 	wordsArray.forEach(function(word, index) {
@@ -84,6 +83,7 @@ function getHiddenIndices(text) {
 		}
 	});
 
+	var commonWords = ["is","several", "call", "called", "are","the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "on", "with", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their ", "what", "so", "up", "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "like", "time", "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "use", "two", "how", "our", "work", "first", "well", "way ", "even", "new", "want", "because", "any", "these", "give", "day", "most", "us"];
 	function isCommonWord(word) {
 		return (commonWords.indexOf(word) > -1);
 	}
