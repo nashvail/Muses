@@ -15,7 +15,7 @@ body {
 }
 
 .container { 
-	width : 85%;
+	width : 80%;
 	margin : 0 auto;
 	margin-top : 9%;
 }
@@ -155,6 +155,7 @@ h1 {
 	-webkit-transform: scale3d(3, 3, 1);
 	transform: scale3d(3, 3, 1);
 }
+
 .backhilite {
 	position : absolute;
 	top : 26%;
@@ -163,4 +164,24 @@ h1 {
 	height: 200px;
 	background-color: #f1c40f;
 	z-index : -999;
+}
+
+.deleteContainer {
+	position : absolute;
+	top : -1000px;
+	left : -1000px;
+	padding : auto 0;
+	background-color : #e94343;
+	vertical-align: center;
+}
+
+.deleteContainer img {
+	position: absolute;
+	padding : 5px;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	cursor : pointer;
 }

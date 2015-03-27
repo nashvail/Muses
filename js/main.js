@@ -54,23 +54,39 @@ $(document).ready(function(){
 	* Sets up the viewport by placing respective elements in their places .
 	* 'noteObj' is a note object
 	*/
-	function initialize(noteObj) {
+	function initialize() {
+		var randomNoteFromStorage = chrome.extension.getBackgroundPage().getRandomNote();
+		var randomNote = new Note(randomNoteFromStorage.content, randomNoteFromStorage.hidden);
 		// Get the node holding the note form the DOM
 		var note = document.querySelector(".note h1");
 
 		// clear and add new html to the note holder
 		note.innerHTML = "";
-		note.innerHTML = noteObj.getNoteHTML;
-		$('.container').fadeIn(300, function(){});
+		note.innerHTML = randomNote.getNoteHTML;
+		// $('.container').fadeIn(300, function(){});
 		// Animate in the note
-		animateNote(note, noteObj);
+		animateNote(note, randomNote);
 
 		// Position the highlight behind the Note
 		var noteContainer = note.getBoundingClientRect();
 		var backHilite = document.querySelector(".backhilite");
-		backHilite.style.top = noteContainer.top;
-		backHilite.style.height = noteContainer.height;
-		backHilite.style.width = 0;
+		assignPosDimAttrs(backHilite, noteContainer.top, 0, 0, noteContainer.height);
+
+		var deleteContainer = document.querySelector('.deleteContainer');
+		assignPosDimAttrs(deleteContainer, noteContainer.top, "100%", "150px", noteContainer.height);
+
+	}
+
+	/*
+	* Function : assignPosDimAttrs(target node, css top attr, css left attr, css width attr, css height attr)
+	* -------------------------------------------------------------------------------------------------------
+	* assignPosDimAttrs === Assign position and dimension attributes. 
+	*/
+	function assignPosDimAttrs(node ,style_top, style_left, style_width, style_height) {
+		node.style.top = style_top;
+		node.style.left = style_left;
+		node.style.width = style_width;
+		node.style.height = style_height;
 	}
 
 	/*
@@ -106,23 +122,35 @@ $(document).ready(function(){
 	}
 
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
-
-	// testing chrome_storage here
-	var randomNote = chrome.extension.getBackgroundPage().getRandomNote();
-	initialize(new Note(randomNote.content, randomNote.hidden));
-
+	initialize();
 
 	// Event listener for the show button(the bulb icon)
 	var show_btn = $('.show_btn');
 	show_btn.click(function(event){
 		show_btn.addClass("cbutton--click");
 		$('.hidden_word').css({"border" : "none"});
-		$('.backhilite').animate({"width" : "100%"}, 700, 'easeInOutCirc', function(){});
+		$('.backhilite').animate({"width" : "100%"}, 700, 'easeInOutCirc');
 		setTimeout(function(){
 			show_btn.removeClass("cbutton--click");
+			$('.deleteContainer').animate({"left" : $(window).width() - 150}, 600, 'easeOutQuart');
 		}, 500);
 		event.stopPropagation();
 	});
+
+	var delete_btn = $('.deleteContainer img');
+	delete_btn.click(function(event) {
+		$('.deleteContainer').animate({"left" : 0, "width" : $(window).width()}, 600, 'easeInOutCirc');
+		setTimeout(function(){
+			$('.deleteContainer').animate({"width" : 0,}, 500, 'easeInOutCirc');
+			$('.backhilite').animate({"width" : "0%"}, 500, 'easeInOutCirc', function(){});
+		}, 300);
+		setTimeout(function() {
+			initialize();
+		}, 860);
+		event.stopPropagation();
+	});
+
+
 
 	
 });
