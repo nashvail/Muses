@@ -127,25 +127,30 @@ $(document).ready(function(){
 	initialize();
 
 	// Event listener for the show button(the bulb icon)
+	var backHilite = $('.backhilite');
+	var deleteContainer = $('.deleteContainer');
+	var hiddenWords = $('.hidden_word');
+	
 	var show_btn = $('.show_btn');
 	show_btn.click(function(event){
 		show_btn.addClass("cbutton--click");
-		$('.hidden_word').css({"border" : "none"});
-		$('.backhilite').animate({"width" : "100%"}, 700, 'easeInOutCirc');
+		hiddenWords.css({"border" : "none"});
+		backHilite.animate({"width" : "100%"}, 700, 'easeInOutCirc');
 		setTimeout(function(){
 			show_btn.removeClass("cbutton--click");
-			$('.deleteContainer').animate({"left" : $(window).width() - 150}, 600, 'easeOutQuint');
+			deleteContainer.animate({"left" : $(window).width() - 150}, 600, 'easeOutQuint');
 		}, 500);
 		event.stopPropagation();
 	});
 
+	// Event listener to the click on delete button
 	var delete_btn = $('.deleteContainer img');
 	delete_btn.click(function(event) {
-		$('.deleteContainer').animate({"left" : 0, "width" : $(window).width()}, 600, 'easeInOutCirc');
+		deleteContainer.animate({"left" : 0, "width" : $(window).width()}, 600, 'easeInOutCirc');
 		setTimeout(function(){
-			$('.deleteContainer').animate({"width" : 0}, 500, 'easeInOutCirc');
-			$('.deleteContainer').animate({"width" : "150px", "left" : "100%"});
-			$('.backhilite').animate({"width" : 0}, 500, 'easeInOutCirc', function(){});
+			deleteContainer.animate({"width" : 0}, 500, 'easeInOutCirc');
+			deleteContainer.animate({"width" : "150px", "left" : "100%"});
+			backHilite.animate({"width" : 0}, 500, 'easeInOutCirc');
 		}, 300);
 		setTimeout(function() {
 			initialize();
