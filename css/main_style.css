@@ -199,6 +199,8 @@ h1 {
 	left : 20px;
 	padding : 8px;
 	cursor : pointer;
+	z-index : 12;
+	border-radius : 200px;
 }
 
 .nextNote{

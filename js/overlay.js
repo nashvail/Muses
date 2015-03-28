@@ -10,6 +10,7 @@
 	add_btn.addEventListener('click', function(event) {
 		overlay.addClass('open');
 		$('.new_overlay .new_note').focus();
+		$('.addNew').animate({"transform" : "rotate(45deg)"}, 700, 'easeOutElastic');
 	});
 
 	noteInput.addEventListener('keydown', function(event) {

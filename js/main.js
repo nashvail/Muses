@@ -82,6 +82,8 @@ $(document).ready(function(){
 
 		} else {
 			document.body.innerHTML = "";
+
+			// littleBlub (not a typo) is the name of our cute little mascot
 			var littleBlub = document.createElement("img");
 			littleBlub.src = "images/little_blub.png";
 			littleBlub.className = "little_blub";
