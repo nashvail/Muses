@@ -29,7 +29,7 @@ chrome.storage.onChanged.addListener(function(){
     // update the websites to track variable
     chrome.storage.local.get("notes", function(result){
         window.notes = JSON.parse(result[window.STORAGE_KEY_NOTES]);
-        console.log(window.notes);
+        console.dir(window.notes);
     });
 });
 
@@ -107,4 +107,20 @@ function getHiddenIndices(text) {
 function getRandomNote() {
 	if(notes.length === 0) return "";
 	else return notes[Math.floor(Math.random() * notes.length)];
+}
+
+/*
+* Function : deleteNote
+* ------------------------------------------------------------------
+* Takes in the content of note as parameter and removes the note
+* from the 'notes' array whose content matches the supplied argument.
+*/
+function deleteNote(noteContent) {
+	window.notes.forEach(function(note, index) {
+		if(note.content === noteContent) {
+			window.notes.splice(index, 1);
+			var storageKey = window.STORAGE_KEY_NOTES;
+			chrome.storage.local.set({ storageKey : JSON.stringify(window.notes)}, function(result) {});
+		}
+	});
 }

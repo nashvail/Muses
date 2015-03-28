@@ -75,7 +75,6 @@ $(document).ready(function(){
 
 		var deleteContainer = document.querySelector('.deleteContainer');
 		assignPosDimAttrs(deleteContainer, noteContainer.top, "100%", "150px", noteContainer.height);
-		console.log(deleteContainer.style);
 
 	}
 
@@ -147,6 +146,9 @@ $(document).ready(function(){
 	delete_btn.click(function(event) {
 		deleteContainer.animate({"left" : 0, "width" : $(window).width()}, 600, 'easeInOutCirc');
 		setTimeout(function(){
+			// Delete from the database
+			chrome.extension.getBackgroundPage().deleteNote($('.note h1').text());
+
 			deleteContainer.animate({"width" : 0}, 500, 'easeInOutCirc');
 			deleteContainer.animate({"width" : "150px", "left" : "100%"});
 			backHilite.animate({"width" : 0}, 500, 'easeInOutCirc');
