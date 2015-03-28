@@ -54,6 +54,7 @@ chrome.storage.onChanged.addListener(function(){
 	  	var snappedNote = {};
 	  	snappedNote.content = info.selectionText;
 	  	snappedNote.hidden = getHiddenIndices(snappedNote.content);
+	  	console.log(snappedNote);
 	  	window.notes.push(snappedNote)
 	  	chrome.storage.local.set({"notes" : JSON.stringify(window.notes)}, function(){});
 	  }
@@ -74,6 +75,12 @@ chrome.storage.onChanged.addListener(function(){
 */
 
 function getHiddenIndices(text) {
+
+	var isCommonWord = function(word) {
+		var commonWords = ["is","several", "call", "called", "are","the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "on", "with", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their ", "what", "so", "up", "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "like", "time", "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "use", "two", "how", "our", "work", "first", "well", "way ", "even", "new", "want", "because", "any", "these", "give", "day", "most", "us"];
+		return (commonWords.indexOf(word) > -1);
+	};
+
 	var wordsArray = text.trim().split(" ");
 	var hiddenIndices = []; 
 	wordsArray.forEach(function(word, index) {
@@ -82,11 +89,6 @@ function getHiddenIndices(text) {
 			hiddenIndices.push(index);
 		}
 	});
-
-	var commonWords = ["is","several", "call", "called", "are","the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "on", "with", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their ", "what", "so", "up", "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "like", "time", "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "use", "two", "how", "our", "work", "first", "well", "way ", "even", "new", "want", "because", "any", "these", "give", "day", "most", "us"];
-	function isCommonWord(word) {
-		return (commonWords.indexOf(word) > -1);
-	}
 
 	// Only hide maximum of 30% of total words in the note
 	var maxHiddenAllowed = Math.ceil(0.30 * wordsArray.length);
@@ -119,8 +121,7 @@ function deleteNote(noteContent) {
 	window.notes.forEach(function(note, index) {
 		if(note.content === noteContent) {
 			window.notes.splice(index, 1);
-			var storageKey = window.STORAGE_KEY_NOTES;
-			chrome.storage.local.set({ storageKey : JSON.stringify(window.notes)}, function(result) {});
+			chrome.storage.local.set({ "notes": JSON.stringify(window.notes)}, function(result) {});
 		}
 	});
 }
