@@ -129,12 +129,11 @@ $(document).ready(function(){
 	// Event listener for the show button(the bulb icon)
 	var backHilite = $('.backhilite');
 	var deleteContainer = $('.deleteContainer');
-	var hiddenWords = $('.hidden_word');
-	
+
 	var show_btn = $('.show_btn');
 	show_btn.click(function(event){
 		show_btn.addClass("cbutton--click");
-		hiddenWords.css({"border" : "none"});
+		$('.hidden_word').css({"border" : "none"});
 		backHilite.animate({"width" : "100%"}, 700, 'easeInOutCirc');
 		setTimeout(function(){
 			show_btn.removeClass("cbutton--click");
