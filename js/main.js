@@ -86,7 +86,7 @@ $(document).ready(function(){
 			littleBlub.src = "images/little_blub.png";
 			littleBlub.className = "little_blub";
 			document.body.appendChild(littleBlub);
-			$('.little_blub').animate({"margin-top" : "200px"}, 700, 'easeInOutQuint');
+			$('.little_blub').animate({"margin-top" : "200px"}, 450, 'easeOutQuart');
 		}
 
 	}
@@ -145,6 +145,7 @@ $(document).ready(function(){
 	var show_btn = $('.show_btn');
 	show_btn.click(function(event){
 		show_btn.addClass("cbutton--click");
+		deleteContainer.css({"display" : "block"});
 		$('.hidden_word').css({"border" : "none"});
 		backHilite.animate({"width" : "100%"}, 700, 'easeInOutCirc');
 		setTimeout(function(){

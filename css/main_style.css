@@ -170,6 +170,7 @@ h1 {
 .deleteContainer {
 	position : absolute;
 	background-color : #e74c3c;
+	display : none;
 }
 
 .deleteContainer img {
