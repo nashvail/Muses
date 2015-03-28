@@ -55,26 +55,34 @@ $(document).ready(function(){
 	* 'noteObj' is a note object
 	*/
 	function initialize() {
-		var randomNoteFromStorage = chrome.extension.getBackgroundPage().getRandomNote();
-		var randomNote = new Note(randomNoteFromStorage.content, randomNoteFromStorage.hidden);
-		// Get the node holding the note form the DOM
 		var note = document.querySelector(".note h1");
+		var randomNoteFromStorage = chrome.extension.getBackgroundPage().getRandomNote();
+		if(randomNoteFromStorage) {
+			var randomNote = new Note(randomNoteFromStorage.content, randomNoteFromStorage.hidden);
+			// Get the node holding the note form the DOM
 
-		// clear and add new html to the note holder
-		note.innerHTML = "";
-		note.innerHTML = randomNote.getNoteHTML;
-		// $('.container').fadeIn(300, function(){});
-		// Animate in the note
-		animateNote(note, randomNote);
+			// clear and add new html to the note holder
+			note.innerHTML = "";
+			note.innerHTML = randomNote.getNoteHTML;
+			// $('.container').fadeIn(300, function(){});
+			// Animate in the note
+			animateNote(note, randomNote);
 
-		// Position the highlight behind the Note
-		var noteContainer = note.getBoundingClientRect();
-		var backHilite = document.querySelector(".backhilite");
-		assignPosDimAttrs(backHilite, noteContainer.top, 0, 0, noteContainer.height);
+			// Position the highlight behind the Note
+			var noteContainer = note.getBoundingClientRect();
+			var backHilite = document.querySelector(".backhilite");
+			assignPosDimAttrs(backHilite, noteContainer.top, 0, 0, noteContainer.height);
 
+			// Red bar that holds the delete button
+			var deleteContainer = document.querySelector('.deleteContainer');
+			assignPosDimAttrs(deleteContainer, noteContainer.top, "100%", "150px", noteContainer.height);
 
-		var deleteContainer = document.querySelector('.deleteContainer');
-		assignPosDimAttrs(deleteContainer, noteContainer.top, "100%", "150px", noteContainer.height);
+		} else {
+			$('.show_btn').remove();
+			note.style.color = "#323232";
+			note.textContent = "There is nothing to show move on";
+			console.log(note);
+		}
 
 	}
 
@@ -150,7 +158,7 @@ $(document).ready(function(){
 			chrome.extension.getBackgroundPage().deleteNote($('.note h1').text());
 
 			deleteContainer.animate({"width" : 0}, 500, 'easeInOutCirc');
-			deleteContainer.animate({"width" : "150px", "left" : "100%"});
+			deleteContainer.animate({"width" : "150px", "left" : "100%"}, 1); // reset the position real quick
 			backHilite.animate({"width" : 0}, 500, 'easeInOutCirc');
 		}, 300);
 		setTimeout(function() {

@@ -29,7 +29,6 @@ chrome.storage.onChanged.addListener(function(){
     // update the websites to track variable
     chrome.storage.local.get("notes", function(result){
         window.notes = JSON.parse(result[window.STORAGE_KEY_NOTES]);
-        console.dir(window.notes);
     });
 });
 
