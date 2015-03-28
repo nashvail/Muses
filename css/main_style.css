@@ -31,7 +31,7 @@ body {
 }
 
 h1 {
-	font-family: "Helvetica Neue";
+	font-family: "Helvetica Neue","Lato";
 	font-weight: 300;
 	font-size : 2em;
 	color : #fff;
@@ -241,7 +241,8 @@ h1 {
 	transition: opacity 0.5s;
 */}
 
-input.new_note {
+textarea.new_note {
+	resize : none;
 	position : absolute;
 	top : 20%;
 	left : 8%;
@@ -249,9 +250,9 @@ input.new_note {
 	width : 80%;
 	font-family : "Lato";
 	font-weight : 300;
-	font-size : 3em;
+	font-size : 2.2em;
 }
 
-input.new_note:focus {
+textarea.new_note:focus {
 	outline-width : 0;
 }

@@ -120,7 +120,19 @@ function deleteNote(noteContent) {
 	window.notes.forEach(function(note, index) {
 		if(note.content === noteContent) {
 			window.notes.splice(index, 1);
-			chrome.storage.local.set({ "notes": JSON.stringify(window.notes)}, function(result) {});
+			chrome.storage.local.set({ "notes": JSON.stringify(window.notes)}, function(result) {
+				console.log("note delted");
+			});
 		}
+	});
+}
+
+function saveNote(noteContent) {
+	var newNote = {};
+	newNote.content = noteContent;
+	newNote.hidden = getHiddenIndices(newNote.content);
+	window.notes.push(newNote);
+	chrome.storage.local.set({ "notes": JSON.stringify(window.notes)}, function(result) {
+		console.log("note added");
 	});
 }
