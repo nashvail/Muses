@@ -158,21 +158,13 @@ h1 {
 
 .backhilite {
 	position : absolute;
-	top : 26%;
-	left : 0;
-	width : 0px;
-	height: 200px;
 	background-color: #f1c40f;
 	z-index : -999;
 }
 
 .deleteContainer {
 	position : absolute;
-	top : -1000px;
-	left : -1000px;
-	padding : auto 0;
 	background-color : #e94343;
-	vertical-align: center;
 }
 
 .deleteContainer img {

@@ -72,8 +72,10 @@ $(document).ready(function(){
 		var backHilite = document.querySelector(".backhilite");
 		assignPosDimAttrs(backHilite, noteContainer.top, 0, 0, noteContainer.height);
 
+
 		var deleteContainer = document.querySelector('.deleteContainer');
 		assignPosDimAttrs(deleteContainer, noteContainer.top, "100%", "150px", noteContainer.height);
+		console.log(deleteContainer.style);
 
 	}
 
@@ -132,7 +134,7 @@ $(document).ready(function(){
 		$('.backhilite').animate({"width" : "100%"}, 700, 'easeInOutCirc');
 		setTimeout(function(){
 			show_btn.removeClass("cbutton--click");
-			$('.deleteContainer').animate({"left" : $(window).width() - 150}, 600, 'easeOutQuart');
+			$('.deleteContainer').animate({"left" : $(window).width() - 150}, 600, 'easeOutQuint');
 		}, 500);
 		event.stopPropagation();
 	});
@@ -141,8 +143,9 @@ $(document).ready(function(){
 	delete_btn.click(function(event) {
 		$('.deleteContainer').animate({"left" : 0, "width" : $(window).width()}, 600, 'easeInOutCirc');
 		setTimeout(function(){
-			$('.deleteContainer').animate({"width" : 0,}, 500, 'easeInOutCirc');
-			$('.backhilite').animate({"width" : "0%"}, 500, 'easeInOutCirc', function(){});
+			$('.deleteContainer').animate({"width" : 0}, 500, 'easeInOutCirc');
+			$('.deleteContainer').animate({"width" : "150px", "left" : "100%"});
+			$('.backhilite').animate({"width" : 0}, 500, 'easeInOutCirc', function(){});
 		}, 300);
 		setTimeout(function() {
 			initialize();
