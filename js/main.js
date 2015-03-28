@@ -173,6 +173,10 @@ $(document).ready(function(){
 		event.stopPropagation();
 	});
 
+	var next_btn = $('.nextNote');
+	next_btn.click(function(event){
+		initialize();
+	});
 
 
 	

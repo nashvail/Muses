@@ -1,6 +1,6 @@
 // Some variable declarations, that are to be taken as constants
 // Title of the menu that is visible in the context menu
-var TITLE_SAVE_MENU  = "Save as a new note";
+var TITLE_SAVE_MENU  = "Remember this";
 var ID_SAVE_MENU = "saveNote";
 var STORAGE_KEY_NOTES = "notes";
 

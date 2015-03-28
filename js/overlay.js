@@ -14,6 +14,7 @@
 
 	noteInput.addEventListener('keydown', function(event) {
 		if(event.which === ESC_KEY) {
+			noteInput.value = "";
 			overlay.removeClass('open');
 		}else if(event.which === RETURN_KEY) {
 			event.preventDefault();
@@ -22,6 +23,7 @@
 			}else{
 				overlay.removeClass('open');
 				chrome.extension.getBackgroundPage().saveNote(noteInput.value);
+				noteInput.value = "";
 			}
 		}
 	});
