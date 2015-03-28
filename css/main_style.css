@@ -199,7 +199,7 @@ h1 {
 	left : 20px;
 	padding : 8px;
 	cursor : pointer;
-	z-index : 12;
+	/*z-index : 12;*/
 	border-radius : 200px;
 }
 
@@ -211,6 +211,29 @@ h1 {
 	cursor : pointer;
 }
 
+.noNotes {
+	font-size : 1.5em;
+	color : #8B8B8B;
+	font-family: "Helvetica Neue", "Lato";
+	font-weight : 300;
+	padding : 40px 10px;
+	width : auto;
+	height : auto;
+	margin : 0 auto;
+	margin-top : -100px;
+}
+
+.addMessage {
+	font-size : 1.2em;
+	color : #8B8B8B;
+	font-family: "Helvetica Neue", "Lato";
+	font-weight : 300;
+	padding : 40px 10px;
+	width : auto;
+	height : auto;
+	margin : 0 auto;
+	margin-top : -100px;
+}
 
 /* Overlay style */
 .new_overlay {

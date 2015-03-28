@@ -83,12 +83,37 @@ $(document).ready(function(){
 		} else {
 			document.body.innerHTML = "";
 
+			var centered = document.createElement("center");
+
 			// littleBlub (not a typo) is the name of our cute little mascot
 			var littleBlub = document.createElement("img");
 			littleBlub.src = "images/little_blub.png";
 			littleBlub.className = "little_blub";
 			document.body.appendChild(littleBlub);
-			$('.little_blub').animate({"margin-top" : "200px"}, 450, 'easeOutQuart');
+			$('.little_blub').animate({"margin-top" : "130px"}, 450, 'easeOutBack');
+			document.body.appendChild(centered);
+
+			// Little blub couldn't find any notes 
+			var noNotesMessage = document.createElement("p");
+			noNotesMessage.className = "noNotes";
+			noNotesMessage.innerText = "Little blub couldn't find any notes!"
+			centered.appendChild(noNotesMessage);
+			$('.noNotes').animate({"margin-top" : "0px"}, 600, 'easeOutBack');
+
+			// A simple message describing how to capture notes
+			var addMessage = document.createElement("p");
+			addMessage.className = "addMessage";
+			addMessage.innerText = "You can clip a note from any site or add one manually";
+			centered.appendChild(addMessage);
+			$('.addMessage').animate({"margin-top" : "-65px"}, 700, 'easeOutBack');
+			
+			var addNewButton = document.createElement("img");
+			addNewButton.src = "images/add_new_icon.png";
+			centered.appendChild(addNewButton);
+			// $('.little_blub').animate({"margin-top" : "130px"}, 450, 'easeOutBack');
+			// document.body.appendChild(centered);
+
+
 		}
 
 	}
