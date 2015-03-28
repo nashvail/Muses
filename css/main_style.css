@@ -13,6 +13,7 @@ body {
 	margin-top : 45px !important;
 	cursor : pointer;
 	display : none !important;
+	z-index : 10 !important;
 }
 
 .container { 
@@ -30,7 +31,7 @@ body {
 }
 
 h1 {
-	font-family: "Helvetica Neue";
+	font-family: "Helvetica Neue","Lato";
 	font-weight: 300;
 	font-size : 2em;
 	color : #fff;
@@ -190,4 +191,103 @@ h1 {
 	height : auto;
 	margin : 0 auto;
 	margin-top : -300px;
+}
+
+.addNew {
+	position : absolute;
+	top : 20px;
+	left : 20px;
+	padding : 8px;
+	cursor : pointer;
+	/*z-index : 12;*/
+	border-radius : 200px;
+}
+
+.nextNote{
+	position : absolute;
+	top : 20px;
+	right : 20px;
+	padding : 8px;
+	cursor : pointer;
+}
+
+.noNotes {
+	font-size : 1.5em;
+	color : #8B8B8B;
+	font-family: "Helvetica Neue", "Lato";
+	font-weight : 300;
+	padding : 40px 10px;
+	width : auto;
+	height : auto;
+	margin : 0 auto;
+	margin-top : -100px;
+}
+
+.addMessage {
+	font-size : 1.2em;
+	color : #8B8B8B;
+	font-family: "Helvetica Neue", "Lato";
+	font-weight : 300;
+	padding : 40px 10px;
+	width : auto;
+	height : auto;
+	margin : 0 auto;
+	margin-top : -100px;
+}
+
+/* Overlay style */
+.new_overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(255,255,255,1);
+	opacity: 0;
+	visibility: hidden;
+/*	-webkit-transition: opacity 0.5s, visibility 0s 0.5s;
+	transition: opacity 0.5s, visibility 0s 0.5s;
+*/}
+
+/*/* Overlay closing cross */
+
+/*.overlay .overlay-close {
+	width: 80px;
+	height: 80px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	overflow: hidden;
+	border: none;
+	background: url(../img/cross.png) no-repeat center center;
+	text-indent: 200%;
+	color: transparent;
+	outline: none;
+	z-index: 1000;
+}
+*/
+
+.new_overlay.open {
+	opacity: 1;
+	visibility: visible;
+	z-index : 11;
+/*	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+*/}
+
+textarea.new_note {
+	resize : none;
+	position : absolute;
+	top : 20%;
+	left : 8%;
+	border : none;
+	width : 80%;
+	height : 250px;
+	font-family : "Lato";
+	font-weight : 300;
+	font-size : 2.2em;
+}
+
+textarea.new_note:focus {
+	outline-width : 0;
 }
