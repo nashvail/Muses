@@ -5,21 +5,8 @@ var ID_SAVE_MENU = "saveNote";
 var STORAGE_KEY_NOTES = "notes";
 
 
-var notes = [
-	{content : "Frankenstein is the name of the doctor, NOT the monster",  hidden : [0, 3, 6]}
-];
+var notes = [];
 
-/*
-* -----------------------------------------------------------
-* Detects the first run of the extension,if it is, it creates
-* apporopriate local storage for storing the notes.
-*/
-chrome.runtime.onInstalled.addListener(function(details){
-    if(details.reason == "install"){
-    	var storageKey = window.STORAGE_KEY_NOTES;
-		chrome.storage.local.set({ storageKey : JSON.stringify(window.notes)}, function(result) {});
-    }
-});
 
 /*
 * -------------------------------------------------
@@ -40,6 +27,19 @@ chrome.storage.onChanged.addListener(function(){
 * Sets up value of variables from the local sotrage
 */
 (function startUp() {
+	/*
+	* -----------------------------------------------------------
+	* Detects the first run of the extension,if it is, it creates
+	* apporopriate local storage for storing the notes.
+	*/
+	// chrome.runtime.onInstalled.addListener(function(details){
+	//     if(details.reason == "install"){
+	//     	console.log("This is the first time running the ext.");
+	//     	var storageKey = window.STORAGE_KEY_NOTES;
+	// 		chrome.storage.local.set({ storageKey : JSON.stringify([])}, function(result) {});
+	//     }
+	// });
+
 	// To add the option to the context menu, that is the menu that is visible when right click is detected
 	chrome.contextMenus.create({"title" : TITLE_SAVE_MENU, "id" : ID_SAVE_MENU, "type" : "normal", "contexts" : ["selection"]});
 

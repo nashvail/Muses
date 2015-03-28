@@ -12,6 +12,7 @@ body {
 .show_btn {
 	margin-top : 45px !important;
 	cursor : pointer;
+	display : none !important;
 }
 
 .container { 
@@ -22,6 +23,10 @@ body {
 
 .note{
 	padding : 10px 100px 10px 100px;
+}
+
+.important_display {
+	display : inline-block !important;
 }
 
 h1 {
@@ -176,4 +181,12 @@ h1 {
 	right: 0;
 	bottom: 0;
 	cursor : pointer;
+}
+
+.little_blub {
+	display : block;
+	width : auto;
+	height : auto;
+	margin : 0 auto;
+	margin-top : -300px;
 }

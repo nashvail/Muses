@@ -58,6 +58,9 @@ $(document).ready(function(){
 		var note = document.querySelector(".note h1");
 		var randomNoteFromStorage = chrome.extension.getBackgroundPage().getRandomNote();
 		if(randomNoteFromStorage) {
+			// show_btn is initially hidden
+			$('.show_btn').addClass('important_display');
+
 			var randomNote = new Note(randomNoteFromStorage.content, randomNoteFromStorage.hidden);
 			// Get the node holding the note form the DOM
 
@@ -78,10 +81,12 @@ $(document).ready(function(){
 			assignPosDimAttrs(deleteContainer, noteContainer.top, "100%", "150px", noteContainer.height);
 
 		} else {
-			$('.show_btn').remove();
-			note.style.color = "#323232";
-			note.textContent = "There is nothing to show move on";
-			console.log(note);
+			document.body.innerHTML = "";
+			var littleBlub = document.createElement("img");
+			littleBlub.src = "images/little_blub.png";
+			littleBlub.className = "little_blub";
+			document.body.appendChild(littleBlub);
+			$('.little_blub').animate({"margin-top" : "200px"}, 700, 'easeInOutQuint');
 		}
 
 	}
