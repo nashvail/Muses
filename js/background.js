@@ -50,10 +50,7 @@ chrome.storage.onChanged.addListener(function(){
 	function onClickHandler(info, tab) {
 	  if(info.menuItemId === ID_SAVE_MENU) {
 	  	// save the note here
-	  	var snappedNote = {};
-	  	snappedNote.content = info.selectionText;
-	  	snappedNote.hidden = getHiddenIndices(snappedNote.content);
-	  	console.log(snappedNote);
+	  	var snappedNote = newStorageNote(info.selectionText);
 	  	window.notes.push(snappedNote)
 	  	chrome.storage.local.set({"notes" : JSON.stringify(window.notes)}, function(){});
 	  }
@@ -121,18 +118,37 @@ function deleteNote(noteContent) {
 		if(note.content === noteContent) {
 			window.notes.splice(index, 1);
 			chrome.storage.local.set({ "notes": JSON.stringify(window.notes)}, function(result) {
-				console.log("note delted");
+				console.log("note deleted");
 			});
 		}
 	});
 }
 
+/*
+* Function : saveNote(note content i.e text of the note)
+* -----------------------------------------------------
+*/
 function saveNote(noteContent) {
-	var newNote = {};
-	newNote.content = noteContent;
-	newNote.hidden = getHiddenIndices(newNote.content);
+	var newNote = newStorageNote(noteContent);
 	window.notes.push(newNote);
 	chrome.storage.local.set({ "notes": JSON.stringify(window.notes)}, function(result) {
 		console.log("note added");
 	});
+}
+
+
+/*
+* Function : newStorageNote(text content of the note)
+* ---------------------------------------------------------------
+* Returns a new storage note object, that is to be pushed into the 
+* notes array.
+* Format of the note object is 
+* {content : "The content of the note", hidden : [1, 2, 3]}
+*/
+function newStorageNote(noteContent) {
+	var newNote = {};
+	newNote.content = noteContent;
+	newNote.hidden = getHiddenIndices(newNote.content);
+
+	return newNote;
 }
