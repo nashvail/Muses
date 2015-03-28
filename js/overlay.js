@@ -24,6 +24,12 @@
 			}else{
 				overlay.removeClass('open');
 				chrome.extension.getBackgroundPage().saveNote(noteInput.value);
+				add_btn.src = "images/check_icon.png";
+				$('.addNew').addClass('animated wobble');
+				setTimeout(function(){
+					add_btn.src = "images/add_new_icon.png";
+					$('.addNew').removeClass('animated wobble');
+				}, 3000);
 				noteInput.value = "";
 			}
 		}
