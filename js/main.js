@@ -110,9 +110,6 @@ $(document).ready(function(){
 			var addNewButton = document.createElement("img");
 			addNewButton.src = "images/add_new_icon.png";
 			centered.appendChild(addNewButton);
-			// $('.little_blub').animate({"margin-top" : "130px"}, 450, 'easeOutBack');
-			// document.body.appendChild(centered);
-
 
 		}
 

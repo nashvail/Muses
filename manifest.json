@@ -1,6 +1,6 @@
 {
-  "name": "Testing out context menus",
-  "description": "Shows some of the features of the Context Menus API using an event page",
+  "name": "Muses",
+  "description": "Helps you remember facts and notes",
   "version": "0.7",
   "manifest_version": 2,
   "permissions": ["contextMenus", "storage"],
