@@ -195,8 +195,8 @@ h1 {
 
 .addNew {
 	position : absolute;
-	top : 20px;
-	left : 20px;
+	top : 40px;
+	left : 40px;
 	padding : 8px;
 	cursor : pointer;
 	/*z-index : 12;*/
@@ -205,8 +205,8 @@ h1 {
 
 .nextNote{
 	position : absolute;
-	top : 20px;
-	right : 20px;
+	top : 40px;
+	right : 40px;
 	padding : 8px;
 	cursor : pointer;
 }
