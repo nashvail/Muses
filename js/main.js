@@ -161,6 +161,15 @@ $(document).ready(function(){
 		}, 300);
 	}
 
+	/*
+	* Function : reInitialize()
+	* -----------------------------------------------------
+	* Redraws the content on the screen.
+	*/
+	function reInitialize() {
+		document.location.reload();
+	}
+
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 	initialize();
 
@@ -194,7 +203,7 @@ $(document).ready(function(){
 			backHilite.animate({"width" : 0}, 500, 'easeInOutCirc');
 		}, 300);
 		setTimeout(function() {
-			initialize();
+			reInitialize();
 		}, 860);
 		event.stopPropagation();
 	});
