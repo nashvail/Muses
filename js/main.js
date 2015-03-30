@@ -67,7 +67,6 @@ $(document).ready(function(){
 			// clear and add new html to the note holder
 			note.innerHTML = "";
 			note.innerHTML = randomNote.getNoteHTML;
-			// $('.container').fadeIn(300, function(){});
 			// Animate in the note
 			animateNote(note, randomNote);
 
@@ -81,7 +80,9 @@ $(document).ready(function(){
 			assignPosDimAttrs(deleteContainer, noteContainer.top, "100%", "150px", noteContainer.height);
 
 		} else {
-			document.body.innerHTML = "";
+
+			var container = document.querySelector(".container");
+			container.innerHTML = ""
 
 			var centered = document.createElement("center");
 
@@ -108,6 +109,7 @@ $(document).ready(function(){
 			$('.addMessage').animate({"margin-top" : "-65px"}, 700, 'easeOutBack');
 			
 			var addNewButton = document.createElement("img");
+			addNewButton.className = "addNew blankPage";
 			addNewButton.src = "images/add_new_icon.png";
 			centered.appendChild(addNewButton);
 
@@ -162,10 +164,10 @@ $(document).ready(function(){
 	// ####################################### END MISC. FUNCTION DEFINITIONS ################################
 	initialize();
 
-	// Event listener for the show button(the bulb icon)
 	var backHilite = $('.backhilite');
 	var deleteContainer = $('.deleteContainer');
 
+	// Event listener for the show button(the bulb icon)
 	var show_btn = $('.show_btn');
 	show_btn.click(function(event){
 		show_btn.addClass("cbutton--click");
@@ -197,6 +199,15 @@ $(document).ready(function(){
 		event.stopPropagation();
 	});
 
+	// Event listener for the add new button
+	var overlay = $('.new_overlay');
+	var add_btn = $('.addNew');
+	add_btn.click(function(event) {
+		overlay.addClass('open');
+		$('.new_overlay .new_note').focus();
+	});
+
+	// Event listener for the next button
 	var next_btn = $('.nextNote');
 	next_btn.click(function(event){
 		initialize();

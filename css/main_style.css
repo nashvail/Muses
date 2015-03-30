@@ -10,7 +10,8 @@ body {
 }
 
 .show_btn {
-	margin-top : 45px !important;
+	margin-top : 40px !important;
+	margin-bottom : 170px !important;
 	cursor : pointer;
 	display : none !important;
 	z-index : 10 !important;
@@ -19,7 +20,6 @@ body {
 .container { 
 	width : 80%;
 	margin : 0 auto;
-	margin-top : 9%;
 }
 
 .note{
@@ -290,4 +290,8 @@ textarea.new_note {
 
 textarea.new_note:focus {
 	outline-width : 0;
+}
+
+.blankPage { 
+	position : static !important;
 }

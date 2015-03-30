@@ -7,11 +7,6 @@
 	var overlay = $('.new_overlay');
 	var noteInput = document.querySelector('.new_note');
 
-	add_btn.addEventListener('click', function(event) {
-		overlay.addClass('open');
-		$('.new_overlay .new_note').focus();
-		$('.addNew').animate({"transform" : "rotate(45deg)"}, 700, 'easeOutElastic');
-	});
 
 	noteInput.addEventListener('keydown', function(event) {
 		if(event.which === ESC_KEY) {
@@ -31,6 +26,8 @@
 					$('.addNew').removeClass('animated wobble');
 				}, 3000);
 				noteInput.value = "";
+				if(!document.querySelector(".container").innerHTML) // A simple check to detect if its the no notes screen
+					document.location.reload();
 			}
 		}
 	});
