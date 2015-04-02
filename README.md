@@ -19,4 +19,7 @@ Chronus is a "new-tab" chrome extension that helps you memorise facts and notes.
 * In the new window that pops up select the folder that you extracted in the third step.
 * The extension is now installed and ready to use. 
 
-
+#Open source credits 
+[Codrops subtle click effects](http://tympanus.net/codrops/2015/02/11/subtle-click-feedback-effects/)
+[jQuery](https://jquery.com/)
+[jQuery UI](https://jqueryui.com/)
