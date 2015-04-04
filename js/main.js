@@ -220,8 +220,9 @@ $(document).ready(function(){
 	// Event listener for the add new button
 	var overlay = $('.new_overlay');
 	var add_btn = $('.addNew');
-	add_btn.click(function(event) {
+	add_btn.click(function(event){
 		overlay.addClass('open');
+		overlay.animate({"top" : "0"}, 700, 'easeOutExpo');
 		$('.new_overlay .new_note').focus();
 	});
 
