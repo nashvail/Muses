@@ -87,34 +87,43 @@ $(document).ready(function(){
 			var centered = document.createElement("center");
 
 			// littleBlub (not a typo) is the name of our cute little mascot
-			var littleBlub = document.createElement("img");
+			var littleBlub = createElemWithClass("img", "little_blub");
 			littleBlub.src = "images/little_blub.png";
-			littleBlub.className = "little_blub";
 			document.body.appendChild(littleBlub);
 			$('.little_blub').animate({"margin-top" : "130px"}, 450, 'easeOutBack');
 			document.body.appendChild(centered);
 
 			// Little blub couldn't find any notes 
-			var noNotesMessage = document.createElement("p");
-			noNotesMessage.className = "noNotes";
+			var noNotesMessage = createElemWithClass("p", "noNotes");
 			noNotesMessage.innerText = "Little blub couldn't find any notes!"
 			centered.appendChild(noNotesMessage);
 			$('.noNotes').animate({"margin-top" : "0px"}, 600, 'easeOutBack');
 
 			// A simple message describing how to capture notes
-			var addMessage = document.createElement("p");
-			addMessage.className = "addMessage";
+			var addMessage = createElemWithClass("p", "addMessage")
 			addMessage.innerText = "You can clip a note from any site or add one manually";
 			centered.appendChild(addMessage);
 			$('.addMessage').animate({"margin-top" : "-65px"}, 700, 'easeOutBack');
 			
-			var addNewButton = document.createElement("img");
-			addNewButton.className = "addNew blankPage";
+			var addNewButton = createElemWithClass("img", "addNew blankPage");
 			addNewButton.src = "images/add_new_icon.png";
 			centered.appendChild(addNewButton);
 
 		}
 
+	}
+
+	/*
+	* Function : createElemWithClass(the element like "p" or "button", the className for the element)
+	* Usage : var addNewButton = createElemWithClass("img", "addNew blankPage")
+	* -----------------------------------------------------------------------------------------------
+	* Both arguments must be string values
+	*/
+	function createElemWithClass(elem, nameClass) {
+		var newElement = document.createElement(elem);
+		newElement.className = nameClass;
+
+		return newElement;
 	}
 
 	/*
