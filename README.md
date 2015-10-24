@@ -1,6 +1,6 @@
 # Muses
 
-Chronus is a "new-tab" chrome extension that helps you memorise facts and notes. You can read more about this project here http://goo.gl/bQGcu6. If you're a developer and can help improve this project, please do so. Any Contribution is appreciated.
+Muses is a "new-tab" chrome extension that helps you memorise facts and notes. You can read more about this project here http://goo.gl/bQGcu6. If you're a developer and can help improve this project, please do so. Any Contribution is appreciated.
 
 
 ### Installation 
