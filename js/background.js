@@ -24,7 +24,7 @@ chrome.storage.onChanged.addListener(function(){
 * Function : startUp();
 * -----------------------------------------------------
 * Initializes click handlers and context menu items.
-* Sets up value of variables from the local sotrage
+* Sets up value of variables from the local storage
 */
 (function startUp() {
 	/*
